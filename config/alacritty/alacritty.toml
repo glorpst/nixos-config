@@ -1,0 +1,21 @@
+[env]
+TERM = "screen-256color"
+
+[font]
+size = 16
+normal = { family = "CommitMono Nerd Font", style = "regular" }
+bold = { family = "CommitMono Nerd Font", style = "bold" }
+italic = { family = "CommitMono Nerd Font", style = "italic" }
+bold_italic = { family = "CommitMono Nerd Font", style = "bold italic" }
+
+[window]
+class = "Alacritty"
+opacity = 0.75
+dynamic_padding = true
+
+[window.padding]
+x = 0
+y = 0
+
+[general]
+# import = [ "path/to/theme.toml" ]
