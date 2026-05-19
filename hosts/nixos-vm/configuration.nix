@@ -1,14 +1,14 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, sysUser, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    ./../nixos-modules
+    ./../../nixos-modules
     inputs.home-manager.nixosModules.default
     inputs.nvf.nixosModules.default
   ];
 
-  networking.hostName = "nixos"; # hostname
+  networking.hostName = "nixos-vm"; # hostname, must match vars in flake.nix to build with nh
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
@@ -26,17 +26,17 @@
 
   nix.settings.download-buffer-size = 536870912;
 
-  users.users.glorpst = {
+  users.users.${sysUser} = {
     isNormalUser = true;
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-
-    ];
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
+    # packages = with pkgs; [
+    # ];
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users."glorpst" = import ./home.nix;
+    extraSpecialArgs = { inherit inputs sysUser; };
+    users.${sysUser} = import ./home.nix;
   };
 
   modules = {
@@ -45,7 +45,7 @@
   
   programs.nh = {
     enable = true;
-    flake = "/home/glorpst/nixos";
+    flake = "/home/${sysUser}/nixos";
 
     clean = {
       enable = true;
@@ -53,7 +53,7 @@
     };
   };
   environment.variables = {
-    FLAKE = "/home/glorpst/nixos";
+    FLAKE = "/home/${sysUser}/nixos";
   };
 
   environment.systemPackages = with pkgs; [

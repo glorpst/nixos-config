@@ -17,7 +17,6 @@
   hardware.graphics.enable = true;
 
   programs.zsh.enable = true;
-  users.users.glorpst.shell = pkgs.zsh;
 
   environment.systemPackages = with pkgs; [
     vim

@@ -31,13 +31,13 @@ in
   };
 
   imports = [
-    ./../home-manager-modules
+    ./../../home-manager-modules
     inputs.nvf.homeManagerModules.default
   ];
 
   home.file = {
-    ".local/share/themes/ClassicPlatinumStreamlined".source = ../config/gtk_theme/ClassicPlatinumStreamlined;
-    ".local/share/themes/RetroismIcons".source = ../config/icon_theme/RetroismIcons;
+    ".local/share/themes/ClassicPlatinumStreamlined".source = ../../config/gtk_theme/ClassicPlatinumStreamlined;
+    ".local/share/themes/RetroismIcons".source = ../../config/icon_theme/RetroismIcons;
   };
 
   gtk = {

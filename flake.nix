@@ -15,11 +15,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, nvf, ... } @ inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+  outputs = { self, nixpkgs, nvf, ... } @ inputs:
+    let
+      sysUser = "glorpst"; # change per system user
+    in {
+    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem { # change nixosConfig.x to host name
+      specialArgs = { inherit inputs sysUser; };
       modules = [
-        ./default/configuration.nix
+        ./hosts/nixos-vm/configuration.nix
         inputs.home-manager.nixosModules.default
       ];
     };

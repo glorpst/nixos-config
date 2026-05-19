@@ -1,4 +1,4 @@
-{ inputs, outputs, ... }:
+{ inputs, outputs, sysUser, ... }:
 
 {
   imports = [
@@ -6,7 +6,7 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs sysUser; };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "bak";
