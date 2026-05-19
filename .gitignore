@@ -1,2 +1,14 @@
+result
+result-*
+
 .histfile
-.zcompdump
+.zsh_history
+.bash_history
+.zcompdump*
+.direnv/
+
+.cache/
+.local/state/
+.~
+*.swp
+*.bak
