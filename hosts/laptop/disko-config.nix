@@ -22,7 +22,7 @@
               content = {
                 type = "filesystem";
                 format = "ext4";
-                mountpoints = "/";
+                mountpoint = "/";
               };
             };
           };
