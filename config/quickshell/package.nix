@@ -1,29 +1,36 @@
-{
-  lib,
-  symlinkJoin,
-  makeWrapper,
-  quickshell,
-  kdePackages,
-  configPath ? ./.,
-}: let
+{ lib
+, symlinkJoin
+, makeWrapper
+, quickshell
+, kdePackages
+, configPath ? /.
+}:
+
+let
+  # Create the full-featured derivation
+  fullQuickshell = quickshell.override {
+    enableExtras = true;
+  };
+
   qmlPath = lib.makeSearchPath "lib/qt-6/qml" [
     kdePackages.qtbase
     kdePackages.qtdeclarative
     kdePackages.qt5compat
+    kdePackages.qtquickcontrols2
   ];
-in
-  symlinkJoin {
-    pname = "retroism";
-    inherit (quickshell) version;
 
-    paths = [quickshell];
-    nativeBuildInputs = [makeWrapper];
+in symlinkJoin {
+  pname = "retroism";
+  inherit (fullQuickshell) version;
 
-    postBuild = ''
-      makeWrapper $out/bin/quickshell $out/bin/retroism \
-        --set QML2_IMPORT_PATH "${qmlPath}" \
-        --add-flags '-p ${configPath}'
-    '';
+  paths = [ fullQuickshell ];
+  nativeBuildInputs = [ makeWrapper ];
 
-    meta.mainProgram = "retroism";
-  }
+  postBuild = ''
+    makeWrapper ${fullQuickshell}/bin/quickshell $out/bin/retroism \
+      --set QML2_IMPORT_PATH "${qmlPath}" \
+      --add-flags '-p ${configPath}'
+  '';
+
+  meta.mainProgram = "retroism";
+}

@@ -5,9 +5,10 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
   configs = {
-    hypr = "hypr";
-    nvim = "nvim";
     alacritty = "alacritty";
+    hypr = "hypr";
+    niri = "niri";
+    nvim = "nvim";
     kitty = "kitty";
     quickshell = "quickshell";
     waybar = "waybar";
@@ -31,13 +32,14 @@ in
   };
 
   imports = [
-    ./../../home-manager-modules
+    ./../../home-manager
     inputs.nvf.homeManagerModules.default
   ];
 
   home.file = {
-    ".local/share/themes/ClassicPlatinumStreamlined".source = ../../config/gtk_theme/ClassicPlatinumStreamlined;
-    ".local/share/themes/RetroismIcons".source = ../../config/icon_theme/RetroismIcons;
+    ".local/share/themes/ClassicPlatinumStreamlined".source = ../../../config/gtk_theme/ClassicPlatinumStreamlined;
+    ".local/share/icons/RetroismIcons".source = ../../../config/icon_theme/RetroismIcons;
+
   };
 
   gtk = {
@@ -52,6 +54,24 @@ in
     };
   };
 
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+    style.name = "gtk2";
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "glorpst";
+    userEmail = "128099126+glorpst@users.noreply.github.com";
+
+    extraConfig = {
+      init.defaultBranch = "main";
+      # pull.rebase = true;
+      url."git@github.com:".insteadOf = "https://github.com/";
+    };
+  };
+
   home.packages = with pkgs; [
     ripgrep
     nil
@@ -62,9 +82,8 @@ in
     gdb
     rustc
     cargo
-    
     wlr-randr
-
+    niri
     hyprland
     hyprpaper
     hyprshot
@@ -79,6 +98,10 @@ in
     dconf
     jq
     socat
+    qt5.qtwayland
+    qt6.qtwayland
+    udiskie
+    swaybg
 
     neovim
     tmux

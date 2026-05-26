@@ -7,6 +7,7 @@
 
   config = lib.mkIf config.modules.desktop.enable {
     programs.hyprland.enable = true;
+    programs.niri.enable = true;
     programs.river-classic.enable = true;
     programs.xwayland.enable = true;
 

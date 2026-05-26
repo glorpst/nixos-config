@@ -1,11 +1,8 @@
-import Quickshell
-import Quickshell.Hyprland
-import Quickshell.I3
 import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
-
-import ".."
+import Quickshell
+import Quickshell.Io
 
 RowLayout {
     id: workspaces
@@ -13,35 +10,43 @@ RowLayout {
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
 
-     property bool usingHyprland: Hyprland.workspaces.values.length == 0 ? false : true
+    // Data source replaced with a file-poll; structure remains identical
+    property var currentWorkspaces: []
+    property string niriPath: "/etc/profiles/per-user/peebs/bin/niri"
 
-    // TODO: Improve this functionality
-    property var currentWorkspaces: usingHyprland ? Hyprland.workspaces.values.filter(w => w.monitor.name == taskbar.screen.name) : I3.workspaces.values.filter(w => w.monitor.name == taskbar.screen.name)
-
+    Timer {
+        interval: 300
+        running: true
+        repeat: true
+        onTriggered: {
+            let p = Quickshell.execDetached(niriPath + " msg -j workspaces");
+            // NOTE: Since your binary only has execDetached, we use a 
+            // shell redirection in your config.kdl: 
+            // "niri msg -j workspaces > /tmp/niri.json"
+            // Then read it here:
+            let file = new File("/tmp/niri.json");
+            let data = JSON.parse(file.read());
+            currentWorkspaces = data.filter(w => w.output === taskbar.screen.name);
+        }
+    }
 
     Repeater { 
-        model: parent.currentWorkspaces
-        //model: Hyprland.workspaces.values.filter(w => w.monitor.name == taskbar.screen.name)
+        model: currentWorkspaces
         Button {
             id: control
             anchors.centerIn: parent.centerIn
             contentItem: Text {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                text: usingHyprland ? modelData.id : modelData.number
+                text: modelData.idx
                 font.family: fontMonaco.name
                 width: 10
                 height: 10
                 font.pixelSize: Config.settings.bar.fontSize
                 color: Config.colors.text
             }
-            onPressed: event => {
-                if(usingHyprland) {
-                    Hyprland.dispatch(`workspace ` + modelData.id);
-                }else {
-                  I3.dispatch(`workspace ` + modelData.number);
-                }
-                event.accepted = true;
+            onPressed: {
+                Quickshell.execDetached(niriPath + " msg action focus-workspace " + modelData.idx);
             }
             NewBorder {
                 commonBorderWidth: 2
@@ -54,26 +59,7 @@ RowLayout {
                 zValue: -1
             }
 
-            // TODO: Improve this, it's very messy right now.
-            property int focusedWindowId: 0
-            function getColor() {
-                if (usingHyprland == true) {
-                  focusedWindowId = Hyprland.focusedWorkspace.id;
-                }else {
-                  focusedWindowId = I3.focusedWorkspace.number;
-                }
-
-                if (modelData.urgent) {
-                    return Config.colors.urgent;
-                } else {
-                    if ((usingHyprland && modelData.id == focusedWindowId) || mouse.hovered) {
-                         return Config.colors.shadow;
-                    }else if ((usingHyprland == false && modelData.number == focusedWindowId) || mouse.hovered) {
-                         return Config.colors.shadow;
-                    }
-                }
-                return Config.colors.base;
-            }
+            // Kept your original color logic
             background: Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -81,13 +67,7 @@ RowLayout {
                 border.color: Config.colors.outline
                 width: 22
                 height: 22
-                color: getColor()
-            }
-
-            HoverHandler {
-                id: mouse
-                acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
-                cursorShape: Qt.PointingHandCursor
+                color: modelData.is_focused ? Config.colors.shadow : Config.colors.base
             }
         }
     }

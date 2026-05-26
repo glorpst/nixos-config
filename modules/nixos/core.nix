@@ -29,6 +29,12 @@
     man-pages-posix
   ];
 
+  console = {
+    font = "ter-v32n";
+    packages = with pkgs; [ terminus_font ];
+    earlySetup = true;
+  };
+
   fonts.packages = with pkgs; [
    nerd-fonts.commit-mono
    nerd-fonts.jetbrains-mono

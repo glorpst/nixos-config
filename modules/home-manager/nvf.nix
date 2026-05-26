@@ -33,6 +33,7 @@
 
           mouse = "a";
 
+          clipboard = "unnamedplus";
           colorcolumn = "100";
           wrap = false;
         };
