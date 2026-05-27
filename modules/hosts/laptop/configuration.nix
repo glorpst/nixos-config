@@ -1,10 +1,12 @@
-{ self, config, pkgs, lib, inputs, sysUser, ... }: {
+{ self, inputs, ... }: {
 
   flake.nixosModules.laptopConfiguration = { pkgs, lib, ... }: {
     imports = [
-      ./hardware-configuration.nix
-      ./../../nixos
+      self.nixosModules.laptopHardware
+      self.nixosModules.laptopDisko
+      ./../../../nixos
       inputs.home-manager.nixosModules.default
+      inputs.disko.nixosModules.default
       inputs.nvf.nixosModules.default
     ];
 
@@ -22,10 +24,10 @@
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
-    networking.wireless.enable = false;
+    # networking.wireless.enable = false;
     # Enables wireless support via wpa_supplicant
-    networking.networkmanager.enable = true;
-    networking.wireless.iwd.enable = false;
+    # networking.networkmanager.enable = true;
+    # networking.wireless.iwd.enable = false;
 
     hardware.enableAllFirmware = true;
 
@@ -44,8 +46,8 @@
     };
 
     home-manager = {
-      extraSpecialArgs = { inherit inputs sysUser; };
-      users.peebs = import ./home.nix;
+      extraSpecialArgs = { inherit inputs; };
+      users.peebs = self.homeManagerModules.laptopHome;
     };
 
     modules = {

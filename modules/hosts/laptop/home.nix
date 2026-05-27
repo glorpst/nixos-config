@@ -1,5 +1,6 @@
-{ config, pkgs, inputs, ... }:
+{ self, inputs, ... }: {
 
+  flake.homeManagerModules.laptopHome = { config, pkgs, ... }:
 let
   dotfiles = "${config.home.homeDirectory}/nixos/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -32,7 +33,7 @@ in
   };
 
   imports = [
-    ./../../home-manager
+    ./../../../home-manager
     inputs.nvf.homeManagerModules.default
   ];
 
@@ -124,4 +125,5 @@ in
       recursive = true;
     })
     configs;
+};
 }

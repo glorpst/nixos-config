@@ -24,6 +24,8 @@ input {
   }
 
   touchpad {
+    accel-profile "adaptive"
+    click-method "button-areas"
     dwt
     dwtp
   }
