@@ -41,13 +41,13 @@
             "eDP-1" = {
               scale = 1.0;
               background-color = "#000000";
-              # position = { x = 0; y = 0; };
+              position = _: { props = { x = 0; y = 0; }; };
             };
 
             "HDMI-A-1" = {
               mode = "1920x1080@119.982";
               transform = "90";
-              # position = { x = 1920; y = 0; };
+              position = _: { props = { x = 1920; y = 0; }; };
             };
           };
 
@@ -111,7 +111,7 @@
 
             "Mod+Comma".focus-monitor-left = _: {};
             "Mod+Period".focus-monitor-right = _: {};
-            "Mod+Shift+Comma".move-window-to-monitor-right = _: {};
+            "Mod+Shift+Comma".move-window-to-monitor-left = _: {};
             "Mod+Shift+Period".move-window-to-monitor-right = _: {};
             
             "Mod+D".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
@@ -175,9 +175,6 @@
             (lib.getExe (pkgs.writeShellScriptBin "wallpapers" ''
               ${lib.getExe pkgs.swaybg} -o eDP-1 -i ~/Pictures/opt_wallpapers/metropolis.png &
               ${lib.getExe pkgs.swaybg} -o HDMI-A-1 -i ~/Pictures/opt_wallpapers/tall_building.jpg &
-            ''))
-            (lib.getExe (pkgs.writeShellScriptBin "monitor-fix" ''
-              ${lib.getExe pkgs.niri} msg output HDMI-A-1 position x=1920 y=0
             ''))
           ];
         };
