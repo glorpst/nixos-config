@@ -2,9 +2,10 @@
 
   flake.nixosModules.laptopConfiguration = { pkgs, lib, ... }: {
     imports = [
+      ./../../../nixos
       self.nixosModules.laptopHardware
       self.nixosModules.laptopDisko
-      ./../../../nixos
+      self.nixosModules.niri
       inputs.home-manager.nixosModules.default
       inputs.disko.nixosModules.default
       inputs.nvf.nixosModules.default

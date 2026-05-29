@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
 
   flake.homeManagerModules.laptopHome = { config, pkgs, ... }:
 let
@@ -8,10 +8,10 @@ let
   configs = {
     alacritty = "alacritty";
     hypr = "hypr";
-    niri = "niri";
+    # niri = "niri";
     nvim = "nvim";
     kitty = "kitty";
-    quickshell = "quickshell";
+    # quickshell = "quickshell";
     waybar = "waybar";
     zsh = "zsh";
 
@@ -45,10 +45,14 @@ in
 
   gtk = {
     enable = true;
+
+    gtk4.theme = null;
+
     theme = {
       name = "ClassicPlatinumStreamlined";
       package = null;
     };
+
     iconTheme = {
       name = "RetroismIcons";
       package = null;
@@ -63,10 +67,11 @@ in
 
   programs.git = {
     enable = true;
-    userName = "glorpst";
-    userEmail = "128099126+glorpst@users.noreply.github.com";
-
-    extraConfig = {
+    settings = {
+      user = {
+        name = "glorpst";
+        email = "128099126+glorpst@users.noreply.github.com";
+      };
       init.defaultBranch = "main";
       # pull.rebase = true;
       url."git@github.com:".insteadOf = "https://github.com/";
