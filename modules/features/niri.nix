@@ -171,10 +171,10 @@
 
             (lib.getExe self'.packages.myNoctalia)
 
-            (lib.getExe (pkgs.writeShellScriptBin "wallpapers" ''
-              ${lib.getExe pkgs.swaybg} -o eDP-1 -i ~/Pictures/opt_wallpapers/metropolis.png &
-              ${lib.getExe pkgs.swaybg} -o HDMI-A-1 -i ~/Pictures/opt_wallpapers/tall_building.jpg &
-            ''))
+            # (lib.getExe (pkgs.writeShellScriptBin "wallpapers" ''
+            #   ${lib.getExe pkgs.swaybg} -o eDP-1 -i ~/Pictures/opt_wallpapers/metropolis.png &
+            #   ${lib.getExe pkgs.swaybg} -o HDMI-A-1 -i ~/Pictures/opt_wallpapers/tall_building.jpg &
+            # ''))
           ];
         };
       };

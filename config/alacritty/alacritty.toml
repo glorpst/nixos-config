@@ -18,4 +18,5 @@ x = 0
 y = 0
 
 [general]
+import = ["~/.config/alacritty/themes/noctalia.toml"]
 # import = [ "path/to/theme.toml" ]
