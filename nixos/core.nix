@@ -36,19 +36,35 @@
   };
 
   fonts.packages = with pkgs; [
-   nerd-fonts.commit-mono
-   nerd-fonts.jetbrains-mono
-   nerd-fonts.fira-code
+    _0xproto
+    adwaita-fonts
+    ibm-plex
+    inconsolata
+    nerd-fonts.symbols-only
+    maple-mono.variable
+    departure-mono
+    monaspace
+    cozette
+    atkinson-hyperlegible-next
+    atkinson-hyperlegible-mono
+    corefonts
+    iosevka
+    nerd-fonts.iosevka
 
-   noto-fonts
-   noto-fonts-cjk-sans
-   noto-fonts-color-emoji
-   liberation_ttf
+    nerd-fonts.commit-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+
+    liberation_ttf
   ];
 
   services.xserver.xkb.layout = "us";
   time.timeZone = "America/Chicago";
-  
+
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
