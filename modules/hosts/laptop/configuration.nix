@@ -11,6 +11,8 @@
       inputs.nvf.nixosModules.default
     ];
 
+    security.pam.services.noctalia = {};
+
     networking.hostName = "ooo"; # hostname, must match vars in flake.nix to build with nh
 
     boot.loader.grub.enable = true;
@@ -37,6 +39,16 @@
     services.udisks2.enable = true;
 
     nix.settings.download-buffer-size = 536870912;
+
+    systemd.services.delay-suspend = {
+      description = "delays 'suspend' to prevent screen lock race condition issues";
+      before = [ "sleep.target" ];
+      wantedBy = [ "sleep.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.coreutils}/bin/sleep 1";
+      };
+    };
 
     users.users.peebs = {
       isNormalUser = true;

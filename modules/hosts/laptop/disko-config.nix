@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{
   flake.nixosModules.laptopDisko = {
   disko.devices = {
     disk = {
