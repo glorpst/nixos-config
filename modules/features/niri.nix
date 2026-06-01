@@ -50,6 +50,19 @@
             };
           };
 
+          window-rules = [{
+            matches = [{}];
+
+            geometry-corner-radius = 12.0;
+            clip-to-geometry = true;
+          }
+
+          {
+            matches = [{ app-id = "kitty"; }];
+
+            open-maximized = true;
+            default-column-width = { proportion = 1.0; };
+          }];
 
           # Keybinds
           binds = {
