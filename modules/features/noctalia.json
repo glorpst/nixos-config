@@ -65,12 +65,17 @@
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
         "outerCorners": true,
-        "position": "left",
+        "position": "top",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
         "rightClickFollowMouse": true,
         "screenOverrides": [
+            {
+                "monitor": "HDMI-A-1",
+                "position": "top",
+                "widgets": {}
+            }
         ],
         "showCapsule": true,
         "showOnWorkspaceSwitch": true,
@@ -676,9 +681,9 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/peebs/Pictures/Wallpapers",
-        "enableMultiMonitorDirectories": false,
-        "enabled": false,
+        "directory": "/home/peebs/Pictures",
+        "enableMultiMonitorDirectories": true,
+        "enabled": true,
         "favorites": [
         ],
         "fillColor": "#000000",
@@ -686,18 +691,26 @@
         "hideWallpaperFilenames": false,
         "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
+            {
+                "name": "eDP-1",
+                "path": "/home/peebs/Pictures/opt_wallpapers/eDP-1"
+            },
+            {
+                "name": "HDMI-A-1",
+                "path": "/home/peebs/Pictures/opt_wallpapers/HDMI-A-1"
+            }
         ],
-        "overviewBlur": 0.4,
+        "overviewBlur": 0.5,
         "overviewEnabled": false,
-        "overviewTint": 0.6,
+        "overviewTint": 0.5,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
-        "setWallpaperOnAllMonitors": true,
+        "setWallpaperOnAllMonitors": false,
         "showHiddenFiles": false,
-        "skipStartupTransition": false,
+        "skipStartupTransition": true,
         "solidColor": "#1a1a2e",
         "sortOrder": "name",
-        "transitionDuration": 1500,
+        "transitionDuration": 500,
         "transitionEdgeSmoothness": 0.05,
         "transitionType": [
             "fade",
@@ -710,7 +723,7 @@
         "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "single",
+        "viewMode": "static",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
@@ -721,7 +734,7 @@
         "wallhavenResolutionMode": "atleast",
         "wallhavenResolutionWidth": "",
         "wallhavenSorting": "relevance",
-        "wallpaperChangeMode": "random"
+        "wallpaperChangeMode": "static"
     }
   }
 }

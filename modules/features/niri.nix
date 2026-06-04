@@ -50,16 +50,20 @@
             };
           };
 
-          window-rules = [{
-            matches = [{}];
-
-            geometry-corner-radius = 12.0;
-            clip-to-geometry = true;
-          }
+          window-rules = [
+          # {
+          #   matches = [{}];
+          #
+          #   geometry-corner-radius = 12.0;
+          #   clip-to-geometry = true;
+          # }
 
           {
             matches = [{ app-id = "kitty"; }];
 
+            background-effect = {
+              blur = true;
+            };
             open-maximized = true;
             default-column-width = { proportion = 1.0; };
           }];
