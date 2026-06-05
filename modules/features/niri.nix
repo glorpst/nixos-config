@@ -178,16 +178,7 @@
 
             "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
-            # (lib.getExe (pkgs.writeShellScriptBin "nm-applet-start" ''
-            #   ${lib.getExe pkgs.networkmanagerapplet} --indicator
-            # ''))
-
-            # (lib.getExe (pkgs.writeShellScriptBin "udiskie-start" ''
-            #   ${lib.getExe pkgs.udiskie} --no-notify --tray
-            # ''))
-
             (lib.getExe self'.packages.myNoctalia)
-
             # (lib.getExe (pkgs.writeShellScriptBin "wallpapers" ''
             #   ${lib.getExe pkgs.swaybg} -o eDP-1 -i ~/Pictures/opt_wallpapers/metropolis.png &
             #   ${lib.getExe pkgs.swaybg} -o HDMI-A-1 -i ~/Pictures/opt_wallpapers/tall_building.jpg &

@@ -75,6 +75,11 @@
                 "monitor": "HDMI-A-1",
                 "position": "top",
                 "widgets": {}
+            },
+            {
+                "enabled": true,
+                "name": "HDMI-A-1",
+                "position": "right"
             }
         ],
         "showCapsule": true,
@@ -667,10 +672,10 @@
     },
     "ui": {
         "boxBorderEnabled": true,
-        "fontDefault": "Sans",
-        "fontDefaultScale": 1.2,
-        "fontFixed": "monospace",
-        "fontFixedScale": 1.1,
+        "fontDefault": "Iosevka Medium",
+        "fontDefaultScale": 1.25,
+        "fontFixed": "Iosevka NFM Medium",
+        "fontFixedScale": 1.25,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": true,
@@ -693,7 +698,7 @@
         "monitorDirectories": [
             {
                 "name": "eDP-1",
-                "path": "/home/peebs/Pictures/opt_wallpapers/eDP-1"
+                "path": "/home/peebs/Pictures/opt_wallpapers/eDP0"
             },
             {
                 "name": "HDMI-A-1",

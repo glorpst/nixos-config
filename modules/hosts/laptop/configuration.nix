@@ -40,6 +40,12 @@
 
     nix.settings.download-buffer-size = 536870912;
 
+    # noctalia dependencies
+    hardware.bluetooth.enable = true;
+    services.power-profiles-daemon.enable = true;
+    services.upower.enable = true;
+    
+
     systemd.services.delay-suspend = {
       description = "delays 'suspend' to prevent screen lock race condition issues";
       before = [ "sleep.target" ];
