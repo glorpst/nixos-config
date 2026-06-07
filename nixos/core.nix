@@ -48,6 +48,7 @@
     atkinson-hyperlegible-next
     atkinson-hyperlegible-mono
     corefonts
+    inter
     iosevka
     nerd-fonts.iosevka
 

@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./nvf/default.nix
+    ./nvf.nix
   ];
 }

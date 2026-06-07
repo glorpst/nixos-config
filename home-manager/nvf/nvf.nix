@@ -11,19 +11,36 @@
         viAlias = false;
         vimAlias = true;
 
+        # lsp
         lsp.enable = true;
         languages = {
           enableTreesitter = true;
 
           nix.enable = true;
+          rust = {
+            enable = true;
+            extensions = {
+              crates-nvim.enable = true;
+            };
+          };
+          java.enable = true;
           typescript.enable = true;
-          rust.enable = true;
         };
 
+        # debugger
+        debugger = {
+          nvim-dap = {
+            enable = true;
+            ui.enable = true;
+          };
+        };
+
+        # theme
         theme = {
           enable = true;
           name = "tokyonight";
           style = "storm";
+          transparent = true;
         };
 
         options = {
@@ -38,6 +55,9 @@
           wrap = false;
         };
 
+        # plugins
+        autopairs.nvim-autopairs.enable = true;
+        binds.whichKey.enable = true;
         statusline.lualine.enable = true;
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
@@ -57,6 +77,7 @@
           };
         };
 
+        # keymaps
         keymaps = [
           { key = "<Space>"; mode = ["n" "v"]; action = "<Nop>"; silent = true; }
           { key = "<leader>e"; mode = "n"; action = ":Oil<CR>"; silent = true; }

@@ -51,22 +51,23 @@
           };
 
           window-rules = [
-          # {
-          #   matches = [{}];
-          #
-          #   geometry-corner-radius = 12.0;
-          #   clip-to-geometry = true;
-          # }
+            {
+              matches = [{}];
 
-          {
-            matches = [{ app-id = "kitty"; }];
+              geometry-corner-radius = 12.0;
+              clip-to-geometry = true;
+            }
+            {
+              matches = [{ app-id = "kitty"; }];
 
-            background-effect = {
-              blur = true;
-            };
-            open-maximized = true;
-            default-column-width = { proportion = 1.0; };
-          }];
+              draw-border-with-background = false;
+              background-effect = {
+                blur = false;
+              };
+              # open-maximized = true;
+              default-column-width = { proportion = 1.0; };
+            }
+          ];
 
           # Keybinds
           binds = {
@@ -77,7 +78,7 @@
             "Mod+M".maximize-column = _: {};
             "Mod+F".fullscreen-window = _: {};
             "Mod+Shift+F".toggle-window-floating = _: {};
-            # "Mod+C".center-column = _: {};
+            "Mod+C".center-column = _: {};
 
             "Mod+H".focus-column-left = _: {};
             "Mod+L".focus-column-right = _: {};
@@ -121,6 +122,7 @@
             "Mod+Ctrl+WheelScrollDown".focus-workspace-down = _: {};
             "Mod+Ctrl+WheelScrollUp".focus-workspace-up = _: {};
 
+            "Mod+Shift+C".spawn-sh = "niri msg action set-column-width 50%";
             "Mod+Ctrl+H".set-column-width = "-5%";
             "Mod+Ctrl+L".set-column-width = "+5%";
             "Mod+Ctrl+J".set-window-height = "-5%";
@@ -157,7 +159,12 @@
             gaps = 5;
             focus-ring = {
               width = 2;
-              active-color = "#88c0d0";
+              active-color = "#33CCFFEE";
+              inactive-color = "#00000000";
+            };
+
+            border = {
+              width = 0;
             };
           };
           
@@ -175,6 +182,14 @@
           spawn-at-startup = [
             (lib.getExe (pkgs.writeShellScriptBin "dbus-update" ''
               dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+            ''))
+
+            # (lib.getExe (pkgs.writeShellScriptBin "nm-applet-start" ''
+            #   ${lib.getExe pkgs.networkmanagerapplet} --indicator
+            # ''))
+
+            (lib.getExe (pkgs.writeShellScriptBin "udiskie-start" ''
+              ${lib.getExe' pkgs.udiskie "udiskie"} --no-notify --tray
             ''))
 
             "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"

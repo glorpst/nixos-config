@@ -21,7 +21,7 @@
     boot.loader.grub.device = "nodev";
     boot.loader.grub.useOSProber = true;
 
-    # bootloader #TODO systemd-boot, other more epic boots
+    # TODO: systemd-boot, other more epic boots
     # boot.loader.systemd-boot.enable = true;
     # boot.loader.efi.canTouchEfiVariables = true;
 
@@ -84,6 +84,14 @@
     };
     environment.variables = {
       FLAKE = "/home/peebs/nixos";
+    };
+
+    fonts.fontconfig = {
+      defaultFonts = {
+        sansSerif = [ "Inter" "Noto Color Emoji" "Symbols Nerd Font" ];
+        serif = [ "Noto Serif" "Noto Color Emoji" "Symbols Nerd Font" ];
+        monospace = [ "Iosevka NF Medium" "Noto Color Emoji" "Symbols Nerd Font" ];
+      };
     };
 
     environment.systemPackages = with pkgs; [
