@@ -72,6 +72,7 @@
           binds = {
             "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
 
+            "Mod+Shift+E".quit = _: {};
             "Mod+Q".close-window = _: {};
             "Mod+M".maximize-column = _: {};
             "Mod+F".fullscreen-window = _: {};
