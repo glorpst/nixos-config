@@ -9,11 +9,11 @@
 
       configs = {
         alacritty = "alacritty";
+        foot = "foot";
         hypr = "hypr";
-        # niri = "niri";
-        nvim = "nvim";
         kitty = "kitty";
-        # quickshell = "quickshell";
+        nvim = "nvim";
+        vesktop = "vesktop";
         waybar = "waybar";
         zsh = "zsh";
 
@@ -111,11 +111,13 @@
         qt6.qtwayland
         udiskie
         swaybg
+        vesktop
 
         neovim
         tmux
         firefox
         alacritty
+        foot
         kitty
 
       ];
@@ -123,6 +125,7 @@
       home.sessionVariables = {
         ZDOTDIR = "$HOME/.config/zsh";
         NIXOS_OZONE_WL = "1";
+        ELECTRON_OZONE_PLATFORM_HINT = "auto";
       };
 
       home.file.".zshenv".text = ''export ZDOTDIR="$HOME/.config/zsh"'';

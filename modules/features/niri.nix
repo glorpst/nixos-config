@@ -67,6 +67,11 @@
               # open-maximized = true;
               default-column-width = { proportion = 1.0; };
             }
+            {
+              matches = [{ app-id = "foot"; }];
+
+              draw-border-with-background = false;
+            }
           ];
 
           # Keybinds
