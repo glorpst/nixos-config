@@ -13,7 +13,7 @@
 
     security.pam.services.noctalia = {};
 
-    networking.hostName = "ooo"; # hostname, must match vars in flake.nix to build with nh
+    networking.hostName = "bmo"; # hostname, must match vars in flake.nix to build with nh
 
     boot.loader.grub.enable = true;
     boot.loader.grub.efiSupport = true;
@@ -56,7 +56,7 @@
       };
     };
 
-    users.users.peebs = {
+    users.users.glorpst = {
       isNormalUser = true;
       extraGroups = [ "networkmanager" "wheel" ];
       shell = pkgs.zsh;
@@ -66,7 +66,7 @@
 
     home-manager = {
       extraSpecialArgs = { inherit inputs; };
-      users.peebs = self.homeManagerModules.laptopHome;
+      users.glorpst = self.homeManagerModules.laptopHome;
     };
 
     modules = {
@@ -75,7 +75,7 @@
   
     programs.nh = {
       enable = true;
-      flake = "/home/peebs/nixos";
+      flake = "/home/glorpst/nixos";
 
       clean = {
         enable = true;
@@ -83,7 +83,7 @@
       };
     };
     environment.variables = {
-      FLAKE = "/home/peebs/nixos";
+      FLAKE = "/home/glorpst/nixos";
     };
 
     fonts.fontconfig = {
