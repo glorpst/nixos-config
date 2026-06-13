@@ -103,6 +103,8 @@
       killall
       libnotify
       networkmanagerapplet
+
+      spotify-player
     ];
 
     system.stateVersion = "25.05";
