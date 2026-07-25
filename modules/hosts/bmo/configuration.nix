@@ -29,7 +29,16 @@
 
     # networking.wireless.enable = false;
     # Enables wireless support via wpa_supplicant
-    # networking.networkmanager.enable = true;
+    # supposedly for pia vpn
+    boot.kernel.sysctl = {
+      "net.ipv4.ip_forward" = 1;
+    };
+    networking.networkmanager = { 
+      enable = true; 
+      plugins = with pkgs; [
+        networkmanager-openvpn
+      ];
+    };
     # networking.wireless.iwd.enable = false;
 
     hardware.enableAllFirmware = true;
