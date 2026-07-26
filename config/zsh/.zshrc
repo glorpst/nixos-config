@@ -13,9 +13,9 @@ export HISTFILE="$ZDOTDIR/.histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 
-if [ -z "$WAYLAND_DISPLAY" ] && [ "XDG_VTNR" = 1 ]; then
-  exec dbus-run-session river
-fi
+# if [ -z "$WAYLAND_DISPLAY" ] && [ "XDG_VTNR" = 1 ]; then
+#   exec dbus-run-session river
+# fi
 
 zmodload zsh/complist
 autoload -U compinit

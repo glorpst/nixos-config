@@ -25,6 +25,7 @@
           };
           java.enable = true;
           typescript.enable = true;
+          odin.enable = true;
         };
 
         # debugger

@@ -64,8 +64,8 @@
 
       qt = {
         enable = true;
-        platformTheme.name = "gtk";
-        style.name = "gtk2";
+        platformTheme.name = "gtk3";
+        style.name = "gtk3"; # change back to 2 if desired
       };
 
       programs.git = {
@@ -89,6 +89,7 @@
         gcc
         gnumake
         gdb
+        odin
         rustc
         cargo
         wlr-randr
