@@ -2,7 +2,7 @@
   flake.nixosModules.gaming = { pkgs, lib, ... }: {
     hardware.graphics = {
       enable = true;
-      enable32bit = true;
+      enable32Bit = true;
     };
 
     programs.steam = {
