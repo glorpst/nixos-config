@@ -22,6 +22,10 @@
       };
     };
 
+    boot.extraModprobeConfig = ''
+      options bluetooth disable_ertm=1
+    '';
+
     environment.systemPackages = with pkgs; [
       protonup-qt
     ];
