@@ -76,7 +76,7 @@
 
           # Keybinds
           binds = {
-            "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
+            "Mod+Return".spawn-sh = lib.getExe pkgs.foot;
 
             "Mod+Shift+E".quit = _: {};
             "Mod+Q".close-window = _: {};
