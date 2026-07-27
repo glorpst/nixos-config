@@ -11,6 +11,15 @@
       dedicatedServer.openFirewall = true;
     };
 
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+        General = {
+          ControllerMode = "dual";
+          Experimental = true;
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       protonup-qt
     ];
