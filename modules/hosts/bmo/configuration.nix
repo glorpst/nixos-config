@@ -6,6 +6,7 @@
       self.nixosModules.laptopHardware
       self.nixosModules.laptopDisko
       self.nixosModules.niri
+      self.nixosModules.noctalia
       self.nixosModules.gaming
       inputs.home-manager.nixosModules.default
       inputs.disko.nixosModules.default
