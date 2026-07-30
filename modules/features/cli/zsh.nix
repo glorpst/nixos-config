@@ -25,8 +25,5 @@
         compinit
       '';
     };
-
-    # users.users.{actualUsername}.shell
-    users.users.bmo.shell = pkgs.zsh;
   };
 }
