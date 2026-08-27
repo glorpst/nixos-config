@@ -115,6 +115,8 @@
       libnotify
       networkmanagerapplet
 
+      anki
+      libreoffice
       spotify-player
     ];
 
