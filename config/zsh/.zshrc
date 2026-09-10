@@ -23,3 +23,6 @@ autoload -U colors && colors
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 _comp_options+=(globdots)
 compinit
+
+# aliases
+alias screenshot='slurp | grim -g - - | wl-copy' 

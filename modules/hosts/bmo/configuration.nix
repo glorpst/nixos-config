@@ -69,7 +69,7 @@
 
     users.users.glorpst = {
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "wireshark" ];
       shell = pkgs.zsh;
       # packages = with pkgs; [
       # ];
@@ -96,6 +96,8 @@
     environment.variables = {
       FLAKE = "/home/glorpst/nixos";
     };
+
+    programs.wireshark.enable = true;
 
     fonts.fontconfig = {
       defaultFonts = {
