@@ -97,7 +97,10 @@
       FLAKE = "/home/glorpst/nixos";
     };
 
-    programs.wireshark.enable = true;
+    programs.wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
 
     fonts.fontconfig = {
       defaultFonts = {
