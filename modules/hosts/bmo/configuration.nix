@@ -146,6 +146,7 @@
       anki
       libreoffice
       spotify-player
+      mpv
     ];
 
     system.stateVersion = "25.05";

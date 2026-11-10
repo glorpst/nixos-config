@@ -19,7 +19,10 @@
                 java.enable = true;
                 typescript.enable = true;
                 odin.enable = true;
-                clang.enable = true;
+                clang = {
+                  enable = true;
+                  lsp.enable = true;
+                };
                 rust = {
                   enable = true;
                   extensions.crates-nvim.enable = true;
