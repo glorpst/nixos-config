@@ -27,6 +27,17 @@
                   enable = true;
                   extensions.crates-nvim.enable = true;
                 };
+                python = {
+                  enable = true;
+                  lsp = {
+                    enable = true;
+                    servers = [ "pyright" ];
+                  };
+                  format = {
+                    enable = true;
+                    type = [ "black" ];
+                  };
+                };
               };
 
               debugger.nvim-dap = {

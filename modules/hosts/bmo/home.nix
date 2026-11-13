@@ -26,7 +26,7 @@
 
       programs = {
         home-manager.enable = true;
-        nvf.enable = true;
+        # nvf.enable = true;
       };
 
       services = {
@@ -113,7 +113,7 @@
         swaybg
         vesktop
 
-        neovim
+        # neovim
         tmux
         firefox
         alacritty
