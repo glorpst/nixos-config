@@ -64,6 +64,9 @@
     services.power-profiles-daemon.enable = true;
     services.upower.enable = true;
 
+    services.tailscale.enable = true;
+    services.openssh.enable = true;
+
     systemd.services.delay-suspend = {
       description = "delays 'suspend' to prevent screen lock race condition issues";
       before = [ "sleep.target" ];
@@ -147,6 +150,7 @@
       libreoffice
       spotify-player
       mpv
+      wayvnc
     ];
 
     system.stateVersion = "25.05";
