@@ -10,7 +10,6 @@
       self.nixosModules.gaming
       inputs.home-manager.nixosModules.default
       inputs.disko.nixosModules.default
-      # inputs.nvf.nixosModules.default
     ];
 
     security.pam.services.noctalia = { };

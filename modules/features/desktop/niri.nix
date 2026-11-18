@@ -4,6 +4,9 @@
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
     };
+    environment.systemPackages = [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia
+    ];
   };
 
   perSystem = { pkgs, lib, self', ... }: {
@@ -138,7 +141,7 @@
             "Mod+Shift+Comma".move-window-to-monitor-left = _: {};
             "Mod+Shift+Period".move-window-to-monitor-right = _: {};
             
-            "Mod+D".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
+            "Mod+D".spawn-sh = "${noctaliaExe} msg panel-toggle launcher";
 
             "Mod+V".spawn-sh = ''${pkgs.alsa-utils}/bin/amixer sset Capture toggle'';
             "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
@@ -189,10 +192,6 @@
               dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
             ''))
 
-            # (lib.getExe (pkgs.writeShellScriptBin "nm-applet-start" ''
-            #   ${lib.getExe pkgs.networkmanagerapplet} --indicator
-            # ''))
-
             (lib.getExe (pkgs.writeShellScriptBin "udiskie-start" ''
               ${lib.getExe' pkgs.udiskie "udiskie"} --no-notify --tray
             ''))
@@ -200,10 +199,6 @@
             "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
             (lib.getExe self'.packages.myNoctalia)
-            # (lib.getExe (pkgs.writeShellScriptBin "wallpapers" ''
-            #   ${lib.getExe pkgs.swaybg} -o eDP-1 -i ~/Pictures/opt_wallpapers/metropolis.png &
-            #   ${lib.getExe pkgs.swaybg} -o HDMI-A-1 -i ~/Pictures/opt_wallpapers/tall_building.jpg &
-            # ''))
           ];
         };
       };

@@ -26,7 +26,6 @@
 
       programs = {
         home-manager.enable = true;
-        # nvf.enable = true;
       };
 
       services = {
@@ -35,7 +34,7 @@
 
       imports = [
         ./../../../home-manager
-        inputs.nvf.homeManagerModules.default
+        inputs.nvf.homeModules.default
       ];
 
       home.file = {
@@ -92,7 +91,6 @@
         rustc
         cargo
         wlr-randr
-        niri
         hyprland
         hyprpaper
         hyprshot
@@ -113,7 +111,6 @@
         swaybg
         vesktop
 
-        # neovim
         tmux
         firefox
         alacritty
